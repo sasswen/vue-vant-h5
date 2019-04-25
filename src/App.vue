@@ -1,16 +1,33 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <van-nav-bar
+      title="标题"
+      left-text="返回"
+      right-text="按钮"
+      left-arrow
+      @click-left="onClickLeft"
+      @click-right="onClickRight"
+    />
     <router-view/>
   </div>
 </template>
+<script>
+import { Toast } from 'vant';
+export default {
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1);
+    },
+    onClickRight() {
+      Toast("按钮");
+    }
+  }
+};
+</script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
